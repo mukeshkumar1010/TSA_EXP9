@@ -1,9 +1,9 @@
 # EX.NO.09        A project on Time series analysis on weather forecasting using ARIMA model 
-### Date: 10.05.25
+## Date: 10.05.25
 
-### AIM:
+## AIM:
 To Create a project on Time series analysis on weather forecasting using ARIMA model in  Python and compare with other models.
-### ALGORITHM:
+## ALGORITHM:
 1. Explore the dataset of weather 
 2. Check for stationarity of time series time series plot
    ACF plot and PACF plot
@@ -14,23 +14,21 @@ To Create a project on Time series analysis on weather forecasting using ARIMA m
 5. Make time series predictions
 6. Auto-fit the ARIMA model
 7. Evaluate model predictions
-### PROGRAM:
-
+## PROGRAM:
+### Name :Mukesh Kumar S
+### Register Number : 212223240099
 ```
-# Name : Mukesh Kumar S
-# Reg No : 212223240099
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from statsmodels.tsa.arima.model import ARIMA
 from sklearn.metrics import mean_squared_error
 
-data = pd.read_csv("weather.csv")
+data = pd.read_csv("AirPassengers.csv")
 
 data.head()
-data['date'] = pd.to_datetime(data['date'])
-data.set_index('date', inplace=True)
+data['Month'] = pd.to_datetime(data['Month'])
+data.set_index('Month', inplace=True)
 
 def arima_model(data, target_variable, order):
     train_size = int(len(data) * 0.8)
@@ -47,7 +45,7 @@ def arima_model(data, target_variable, order):
     plt.plot(train_data.index, train_data[target_variable], label='Training Data')
     plt.plot(test_data.index, test_data[target_variable], label='Testing Data')
     plt.plot(test_data.index, forecast, label='Forecasted Data')
-    plt.xlabel('Date')
+    plt.xlabel('Month')
     plt.ylabel(target_variable)
     plt.title('ARIMA Forecasting for ' + target_variable)
     plt.legend()
@@ -55,13 +53,15 @@ def arima_model(data, target_variable, order):
 
     print("Root Mean Squared Error (RMSE):", rmse)
 
-arima_model(data, 'temp_max', order=(5,1,0))
+arima_model(data, '#Passengers', order=(5,1,0))
     
 ```
 
 ### OUTPUT:
-
-![download](https://github.com/user-attachments/assets/e91bc7d3-44da-44d7-9f7c-dd3e04710a8d)
+### Data:
+![Data](https://github.com/user-attachments/assets/40869347-441c-4355-92a0-e013587a13fc)
+### Arima Forcasting:
+![output](https://github.com/user-attachments/assets/a0c146c6-24fd-47f3-87fc-c9e16951deba)
 
 ### RESULT:
 Thus the program run successfully based on the ARIMA model using python.
